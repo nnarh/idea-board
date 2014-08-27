@@ -1,0 +1,7 @@
+<h2>Search Results for : <%= @query %></h2>
+
+<ul>
+  <% @ideas.each do |idea| %>
+    <li><%= link_to idea.title, idea %></li>
+  <% end %>
+</ul>
