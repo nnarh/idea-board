@@ -1,0 +1,11 @@
+<nav>
+  <ul>
+    <li><%= link_to "Create Group", new_group_path %></li>
+  </ul>
+</nav>
+
+<ul>
+  <% @groups.each do |group| %>
+    <li><%= link_to group.name, group %></li>
+  <% end %>
+</ul>
