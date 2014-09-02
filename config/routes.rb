@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :groups, only: [:index, :new, :create, :show] do
     member do
       post "join" => "group_memberships#create"
+      delete "leave" => "group_memberships#destroy"
     end
   end
 

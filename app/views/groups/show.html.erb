@@ -4,7 +4,11 @@
 
 <nav>
   <ul>
-    <li><%= link_to "Join", join_group_path(@group), method: :post %></li>
+    <% if current_user.member?(@group) %>
+      <li><%= link_to "Leave", leave_group_path(@group), method: :delete, data: { confirm: "Are you sure you want to leave the group?" } %></li>
+    <% else %>
+      <li><%= link_to "Join", join_group_path(@group), method: :post %></li>
+    <% end %>
   </ul>
 </nav>
 

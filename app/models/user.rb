@@ -9,4 +9,12 @@ class User < ActiveRecord::Base
   def join(group)
     groups << group
   end
+
+  def leave(group)
+    groups.delete(group)
+  end
+
+  def member?(group)
+    groups.include?(group)
+  end
 end
