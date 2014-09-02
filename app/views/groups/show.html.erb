@@ -4,11 +4,11 @@
 
 <nav>
   <ul>
-    <li><%= link_to "Join", join_group_path(@group), method: :post %>
+    <li><%= link_to "Join", join_group_path(@group), method: :post %></li>
   </ul>
 </nav>
 
-<h3><p>Member list<p></h3>
+<h3>Member list</h3>
 
 <ul>
   <% @group.users.each do |user| %>
