@@ -2,8 +2,17 @@
 
 <p><%= @group.description %></p>
 
-<ul>
-  <% @group.users.each do |user| %>
-    <li><%= link_to user.email, user %></li>
-  <% end %>
-</ul>
+<nav>
+  <ul>
+    <li><%= link_to "Join", join_group_path(@group), method: :post %>
+  </ul>
+</nav>
+
+<h3><p>Member list<p></h3>
+
+    <ul>
+      <% @group.users.each do |user| %>
+        <li><%= link_to user.email, user %></li>
+      <% end %>
+    </ul>
+
