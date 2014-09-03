@@ -11,6 +11,7 @@
   <nav>
     <%= link_to "Home", root_path %>
     <%= link_to "Search", search_path %>
+    <%= link_to "Groups", groups_path %>
     <% if signed_in? %>
       <%= link_to "Sign out", session_path, method: :delete %>
     <% else %>
