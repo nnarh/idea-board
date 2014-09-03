@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = sign_up(user_params, email_or_username: [:email, :username])
 
     if @user.valid?
-     sign_in(@user)
+      sign_in(@user)
       redirect_to root_path
     else
       render :new
@@ -22,4 +22,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email_or_username, :password)
   end
 end
-
