@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = sign_up(user_params, email_or_username: [:email, :username])
+    @user = sign_up(user_params)
 
     if @user.valid?
       sign_in(@user)
@@ -19,6 +19,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email_or_username, :password)
+    params.require(:user).permit(:usernam, :email, :password)
   end
 end
