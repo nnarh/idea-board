@@ -1,0 +1,8 @@
+<% if object.errors.any? %>
+  <p>Could not save:</p>
+  <ul>
+    <% object.errors.full_messages.each do |error_message| %>
+      <li><%= error_message %></li>
+    <% end %>
+  </ul>
+<% end %>

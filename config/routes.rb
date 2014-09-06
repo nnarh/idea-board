@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   end
 
   constraints Monban::Constraints::SignedOut.new do
-    root "sessions#new", as: :landing
+    root "homes#show", as: :landing
+   # root "sessions#new", as: :landing
   end
 
   resource :session, only: [:new, :create, :destroy]
