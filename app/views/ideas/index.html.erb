@@ -1,0 +1,11 @@
+<nav>
+  <ul>
+    <li><%= link_to "Create Idea", new_group_path %></li>
+  </ul>
+</nav>
+
+<ul>
+  <% @ideas.each do |idea| %>
+    <li><%= link_to idea.title, idea %></li>
+  <% end %>
+</ul>

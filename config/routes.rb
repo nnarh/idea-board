@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
-  resources :ideas, only: [:new, :create, :show]
+  resources :ideas, only: [:index, :new, :create, :show] do
+    resources :comments
+  end
   resources :groups, only: [:index, :new, :create, :show, :destroy] do
     member do
       post "join" => "group_memberships#create"
