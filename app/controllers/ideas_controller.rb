@@ -2,7 +2,7 @@ class IdeasController < ApplicationController
   skip_before_action :require_login, only:[:show]
 
   def index
-    @ideas = Idea.all
+    @ideas = current_user.ideas
   end
 
   def new

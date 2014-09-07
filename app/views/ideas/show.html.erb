@@ -2,5 +2,13 @@
 
 <p><%= @idea.description %></p>
 
-<%= link_to "Join", users_path %>
-<%= link_to "Leave", users_path %>
+<nav>
+  <ul>
+    <% if current_user.member?(@idea) %>
+      <li><%= link_to "Leave", leave_idea_path(@idea), method: :delete, data: { confirm: "Sorry to see you go!" } %></li>
+    <% else %>
+      <%= link_to "Join", join_idea_path(@idea), method: :post %></li>
+  <% end %>
+  <% if current_user.admin? %>
+    <li><%= link_to "Delete Idea", @idea, method: :delete, data: { confirm: "Are you sure you want to delete idea?" } %></li>
+  <% end %>

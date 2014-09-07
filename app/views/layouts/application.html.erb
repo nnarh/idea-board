@@ -10,16 +10,22 @@
 
   <nav>
     <%= link_to "Home", root_path %>
-    <%= link_to "Search", search_path %>
-    <%= link_to "Groups", groups_path %>
-    <%= link_to "Ideas", ideas_path %>
     <% if signed_in? %>
+      <%= link_to "Ideas", ideas_path %>
+      <%= link_to "Groups", groups_path %>
       <%= link_to "Sign out", session_path, method: :delete %>
     <% else %>
       <%= link_to "Sign in", new_session_path %>
       <%= link_to "Sign up", new_user_path %>
     <% end %>
+    <%= link_to "Search", search_path %>
   </nav>
+
+  <div>
+    <% if signed_in? %>
+      <h3>Hello <%= current_user.username %>!</h3>
+    <% end %>
+    </div>
 
 <%= yield %>
 
