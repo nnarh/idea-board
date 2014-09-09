@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if sign_in(user)
       redirect_to search_path
     else
-      render :new
+      flash.now.alert = "Email or password is invalid."
     end
   end
 

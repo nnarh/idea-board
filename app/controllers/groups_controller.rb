@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.users << current_user
+    @group.users = User.where(id: user_ids)
 
     if @group.save
       redirect_to @group, notice: "Group has been created"
@@ -23,16 +23,20 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:id])
-    @group.destroy
+    Group.find(params[:id]).destroy
 
-    redirect_to @group, notice: "Group has been deleted"
+    redirect_to groups_path, notice: "Group has been deleted"
   end
+
   private
 
   def group_params
     params.
       require(:group).
       permit(:name, :description)
+  end
+
+  def user_ids
+    params[:group][:users].select(&:present?)
   end
 end

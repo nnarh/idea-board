@@ -22,6 +22,10 @@
     <%= form.text_area :description %>
   </div>
   <div>
+    <%= form.label :members %>
+    <%= form.collection_check_boxes(:users, User.all, :id, :username) %>
+  </div>
+  <div>
     <%= form.submit "Create Group" %>
   </div>
 <% end %>

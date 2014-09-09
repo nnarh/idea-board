@@ -13,7 +13,10 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
-  resources :admin, only: [:new, :show, :create, :destroy]
+  namespace :admin do
+    get "", to: "dashboard#index", as: "/"
+    resources :users, only:[:index, :show, :update]
+  end
   resources :ideas, only: [:index, :show, :create, :destroy] do
     member do
       post "join" => "idea_memberships#create"

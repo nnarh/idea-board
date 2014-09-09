@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <nav>
+  <nav class="navigation">
     <%= link_to "Home", root_path %>
     <% if signed_in? %>
       <%= link_to "Ideas", ideas_path %>
@@ -21,11 +21,11 @@
     <%= link_to "Search", search_path %>
   </nav>
 
-  <div>
     <% if signed_in? %>
-      <h3>Hello <%= current_user.username %>!</h3>
+      <div>
+        <h3>Hello <%= current_user.username %>!</h3>
+      </div>
     <% end %>
-    </div>
 
 <%= yield %>
 
