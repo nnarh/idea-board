@@ -1,0 +1,31 @@
+<h2>Edit Group</h2>
+<%= form_for :group, url: groups_path do |f| %>
+  <% if @group.errors.any? %>
+    <div id= "error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this idea from saving:</h2>
+      <ul>
+        <% @group.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<%= form_for @group do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :members %>
+    <%= form.collection_check_boxes(:user_ids, User.all , :id, :username) %>
+  </div>
+  <div>
+    <%= form.submit "Update Group" %>
+  </div>
+<% end %>

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
     resources :comments
   end
-  resources :groups, only: [:index, :new, :create, :show, :destroy] do
+  resources :groups, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :ideas, only: [:new, :create]
     member do
       post "join" => "group_memberships#create"

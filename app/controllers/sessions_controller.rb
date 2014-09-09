@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
     if sign_in(user)
       redirect_to search_path
     else
-      flash.now.alert = "Email or password is invalid."
+      flash[:notice] = "Email or password is invalid."
+      redirect_to root_path
     end
   end
 

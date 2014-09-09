@@ -16,10 +16,10 @@ class IdeasController < ApplicationController
 
   def create
     @idea = current_user.ideas.new(idea_params)
+    @group = Group.find(params[:group_id])
 
     if @idea.save
       current_user.join_idea(@idea)
-      @group = Group.find(params[:group_id])
       @idea.update(group: @group)
 
       redirect_to @idea

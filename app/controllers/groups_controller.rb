@@ -22,6 +22,19 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    group = Group.find(params[:id])
+    if group.update(group_params)
+    redirect_to "/groups/#{group.id}"
+    else
+      render :edit
+    end
+  end
+
   def destroy
     Group.find(params[:id]).destroy
 
@@ -33,7 +46,7 @@ class GroupsController < ApplicationController
   def group_params
     params.
       require(:group).
-      permit(:name, :description)
+      permit(:name, :description, user_ids: [])
   end
 
   def user_ids
