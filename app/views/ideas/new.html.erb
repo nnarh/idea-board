@@ -12,7 +12,7 @@
   <% end %>
 <% end %>
 
-<%= form_for @idea do |form| %>
+<%= form_for [@group, @idea] do |form| %>
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>

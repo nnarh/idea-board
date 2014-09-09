@@ -4,7 +4,8 @@
 
 <nav>
   <ul>
-    <% if current_user.member?(@group) %>
+    <% if current_user.member_group?(@group) %>
+      <%= link_to "Create Idea", new_group_idea_path(@group) %>
       <li><%= link_to "Leave", leave_group_path(@group), method: :delete, data: { confirm: "Are you sure you want to leave the group?" } %></li>
     <% else %>
       <li><%= link_to "Join", join_group_path(@group), method: :post %></li>
@@ -14,6 +15,10 @@
     <% end %>
   </ul>
 </nav>
+
+<h3>Group Ideas</h3>
+
+<%= render @group.ideas %>
 
 <h3>Member list</h3>
 

@@ -1,20 +1,34 @@
 class User < ActiveRecord::Base
   has_many :ideas
+  has_many :idea_memberships
+  has_many :joined_ideas, through: :idea_memberships, source: :idea
   has_many :group_memberships
   has_many :groups, through: :group_memberships
 
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
 
-  def join(group)
+  def join_group(group)
     groups << group
   end
 
-  def leave(group)
+  def join_idea(idea)
+    joined_ideas << idea
+  end
+
+  def leave_group(group)
     groups.delete(group)
   end
 
-  def member?(group)
+  def leave_idea(idea)
+    joined_ideas.delete(idea)
+  end
+  
+  def member_group?(group)
     groups.include?(group)
+  end
+
+  def member_idea?(idea)
+    ideas.include?(idea)
   end
 end
