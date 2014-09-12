@@ -1,16 +1,18 @@
 <div class="form">
   <h2>Sign In<h2>
-  <%= form_for :session, url: session_path do |form| %>
-    <div>
-      <%= form.label :username %>
-      <%= form.text_field :username %>
+      <div class="form medium-6 columns">
+        <%= form_for :session, url: session_path do |form| %>
+          <div>
+            <%= form.label :username %>
+            <%= form.text_field :username %>
+          </div>
+          <div>
+            <%= form.label :password %>
+            <%= form.password_field :password %>
+          </div>
+          <div>
+            <%= form.submit "Sign in", :class => "button" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <div>
-      <%= form.label :password %>
-      <%= form.password_field :password %>
-    </div>
-    <div>
-      <%= form.submit "Sign in", :class => "btn" %>
-    </div>
-  <% end %>
-</div>

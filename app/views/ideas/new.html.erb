@@ -1,27 +1,29 @@
-<h2>Create an Idea</h2>
-<%= form_for :idea, url: ideas_path do |f| %>
-  <% if @idea.errors.any? %>
-    <div id= "error_explanation">
-      <h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from saving:</h2>
-      <ul>
-        <% @idea.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+<div class="form">
+  <h2>Create an Idea</h2>
+  <%= form_for :idea, url: ideas_path do |f| %>
+    <% if @idea.errors.any? %>
+      <div id= "error_explanation">
+        <h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from saving:</h2>
+        <ul>
+          <% @idea.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= form_for [@group, @idea] do |form| %>
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="forms medium-6 columns">
+    <%= form_for [@group, @idea] do |form| %>
+      <div>
+        <%= form.text_field :title, placeholder: "Title" %>
+      </div>
+      <div>
+        <%= form.text_area :description, placeholder: "Description" %>
+      </div>
+      <div>
+        <%= form.submit "Create Idea", :class => "button" %>
+      </div>
+    <% end %>
   </div>
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-  <div>
-    <%= form.submit "Create Idea" %>
-  </div>
-<% end %>
+</div>

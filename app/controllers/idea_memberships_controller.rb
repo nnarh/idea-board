@@ -8,6 +8,6 @@ class IdeaMembershipsController < ApplicationController
   def destroy
     idea = Idea.find(params[:id])
     current_user.leave_idea(idea)
-    redirect_to idea.group
+    redirect_to root_path
   end
 end

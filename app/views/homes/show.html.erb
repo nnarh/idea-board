@@ -1,9 +1,12 @@
-<div class="main-intro half-width">
-  <h1>Welcome to Idea Board</h1>
-  <p>Idea board is a collaborative idea sharing application, by developers for developers.</p>
-</div>
+<div class="row">
+  <div class="main-intro medium-4 columns">
+    <h1>Welcome to Idea-Board</h1>
+    <p></p>
+    <p>Idea board is a collaborative idea sharing application, by developers for developers.</p>
+  </div>
 
-<div class="login-forms half-width">
-  <%= render "sign_in" %>
-  <%= render "sign_up", user: @user %>
+  <div class="login-forms medium-8 columns">
+    <%= render "sign_in" %>
+    <%= render "sign_up", user: @user %>
+  </div>
 </div>
