@@ -9,6 +9,7 @@
   <body>
     <nav class="top-bar" data-topbar role="navigation">
       <section class="top-bar-section">
+        <!-- Left Nav Section -->
         <ul class="left">
           <li class="nav-link"><%= link_to "Home", root_path %></li>
           <% if signed_in? %>
@@ -22,7 +23,16 @@
         </ul>
         <!-- Right Nav Section -->
         <ul class="right">
-          <li class="nav-link"><%= link_to "Search", search_path %></li>
+          <li class="has-form">
+            <div class="row collapse">
+              <div class="large-8 small-9 columns">
+                <input type="text" placeholder="Search Ideas">
+              </div>
+              <div class="large-4 small-3 columns">
+                <a href="search" class="alert button expanded">Search</a>
+              </div>
+            </div>
+          </li>
         </ul>
 
       </section>
