@@ -1,12 +1,11 @@
-<div class="row">
-  <div class="main-intro medium-4 columns">
-    <h1>Welcome to Idea-Board</h1>
-    <p></p>
+<div class="left">
+    <h2>Welcome to Idea-Board</h2>
     <p>Idea board is a collaborative idea sharing application, by developers for developers.</p>
-  </div>
+</div>
 
-  <div class="login-forms medium-8 columns">
+  <div class="form medium-3 columns">
     <%= render "sign_in" %>
+  </div>
+  <div class="form medium-3 columns" >
     <%= render "sign_up", user: @user %>
   </div>
-</div>

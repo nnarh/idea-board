@@ -1,5 +1,9 @@
-<%= render "search_form" %>
+<div class="form">
+  <%= render "search_form" %>
+</div>
 
-<% if @query.present? %>
-  <%= render "search_results" %>
-<% end %>
+<div class="form">
+  <% if @query.present? %>
+    <%= render "search_results" %>
+  <% end %>
+</div>

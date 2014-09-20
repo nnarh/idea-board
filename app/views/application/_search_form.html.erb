@@ -1,10 +1,9 @@
 <div class="form">
   <h2>Search Ideas<h2>
-
-      <div class= "form medium-9 column">
+      <div class="form medium-6">
         <%= form_tag(search_path, method: :get) do %>
-            <%= search_field_tag :query, nil, placeholder: "Search Ideas" %>
-            <%= submit_tag "Search", :class => "button" %>
+          <%= search_field_tag :query, nil, placeholder: "Search Ideas" %>
+          <%= submit_tag "Search", :class => "button" %>
         <% end %>
       </div>
     </div>
