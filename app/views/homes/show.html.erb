@@ -1,11 +1,26 @@
-<div class="left">
+<video loop="loop" preload="auto" class="video" autoplay>
+  <source src="/assets/movie_clip.mp4" type="video/mp4">
+</video>
+
+<% content_for :javascript do %>
+  <%#= javascript_include_tag "lib/jquery.fitvids" %>
+  <script>
+    $(document).ready(function(){
+      $(".video").fitVids();
+    });
+  </script>
+<% end %>
+
+<div class="home-content">
+  <div class="medium-6 columns">
     <h2>Welcome to Idea-Board</h2>
     <p>Idea board is a collaborative idea sharing application, by developers for developers.</p>
-</div>
+  </div>
 
-  <div class="form medium-3 columns">
+  <div class="medium-3 columns">
     <%= render "sign_in" %>
   </div>
-  <div class="form medium-3 columns" >
+  <div class="medium-3 columns" >
     <%= render "sign_up", user: @user %>
   </div>
+</div>

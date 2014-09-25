@@ -1,25 +1,23 @@
 <div class="form">
   <h2>Sign Up<h2>
-      <div class="form medium-6 columns">
-        <%= form_for user do |form| %>
+      <%= form_for user do |form| %>
 
-          <%= render "errors", object: user %>
+        <%= render "errors", object: user %>
 
-          <div>
-            <%= form.label :username %>
-            <%= form.text_field :username %>
-          </div>
-          <div>
-            <%= form.label :email %>
-            <%= form.email_field :email %>
-          </div>
-          <div>
-            <%= form.label :password %>
-            <%= form.password_field :password %>
-          </div>
-          <div>
-            <%= form.submit "Sign up", :class => "button" %>
-          </div>
-        <% end %>
-      </div>
+        <div>
+          <%= form.label :username %>
+          <%= form.text_field :username %>
+        </div>
+        <div>
+          <%= form.label :email %>
+          <%= form.email_field :email %>
+        </div>
+        <div>
+          <%= form.label :password %>
+          <%= form.password_field :password %>
+        </div>
+        <div>
+          <%= form.submit "Sign up", :class => "button" %>
+        </div>
+      <% end %>
     </div>

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @hash = Digest::MD5.hexdigest("nicknarh@gmail.com")
   end
 
   def new
