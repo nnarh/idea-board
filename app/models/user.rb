@@ -23,12 +23,12 @@ class User < ActiveRecord::Base
   def leave_idea(idea)
     joined_ideas.delete(idea)
   end
-  
+
   def member_group?(group)
     groups.include?(group)
   end
 
   def member_idea?(idea)
-    ideas.include?(idea)
+    joined_ideas.include?(idea)
   end
 end
