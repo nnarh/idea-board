@@ -67,8 +67,51 @@ body {
     top: -3px;
     position: relative;
   }
-  a {
-    height: 37px;
-    padding: 11px 23px;
+  .button {
+    height: 39px;
+    padding: 10px 30px;
+  }
+}
+
+footer {
+  background: black;
+  height: 50px;
+  position: relative;
+  z-index: 3
+}
+
+.wrap {
+  position:relative;
+  margin:0 auto;
+  width:900px;
+}
+
+#footer {
+  position:fixed;
+  bottom:0;
+  z-index:999999;
+  background: black;
+  height: 50px;
+  width: 100%;
+}
+
+.container {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li a {
+      float: left;
+      margin: 5px;
+      padding: 5px;
+      color: #ccc;
+    }
+    li span {
+      float: left;
+      margin: 5px;
+      padding: 5px;
+      color: #ccc;
+    }
   }
 }

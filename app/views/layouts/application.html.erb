@@ -26,10 +26,13 @@
         </ul>
         <!-- Right Nav Section -->
         <div class="medium-6 columns nav-search">
-            <input type="text" placeholder="Search Ideas">
-            <a href="search" class="button expanded">Search</a>
+          <%= form_tag(search_path, method: :get) do %>
+            <%= search_field_tag :query, nil, placeholder: "Search Ideas" %>
+            <%= submit_tag "Search", :class => "button" %>
+          <% end %>
+          <!--<input type="text" placeholder="Search Ideas">
+          <a href="search" class="button expanded">Search</a> -->
         </div>
-
       </section>
     </nav>
     <% if signed_in? %>
@@ -43,5 +46,24 @@
     </div>
     <%= yield :javascript %>
 
+    <div id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav>
+              <ul>
+                <li>
+                  <span class="copy">© 2014 IdeaBoard</span>
+                  <a href="/about">About</a>
+                  <a href="/about">Contact</a>
+                  <a href="/about">Privacy</a>
+                  <a href="/about">Terms</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
