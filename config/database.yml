@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: ment0r_production
-  username: ment0r
-  password: <%= ENV['MENT0R_DATABASE_PASSWORD'] %>
+  username: root
+  password:
