@@ -11,6 +11,10 @@ Rails.application.routes.draw do
    # root "sessions#new", as: :landing
   end
 
+  get '/about' => 'pages#about'
+  get '/privacy' => 'pages#privacy'
+  get '/terms' => 'pages#terms'
+
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
   namespace :admin do
