@@ -21,13 +21,15 @@ Rails.application.routes.draw do
     get "", to: "dashboard#index", as: "/"
     resources :users, only:[:index, :show, :update]
   end
+
   resources :ideas, only: [:index, :show, :create, :destroy] do
     member do
       post "join" => "idea_memberships#create"
       delete "leave" => "idea_memberships#destroy"
     end
-    resources :comments
+    resources :comments, only: [:create]
   end
+
   resources :groups, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :ideas, only: [:new, :create]
     member do

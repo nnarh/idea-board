@@ -3,6 +3,13 @@
 
   <p><%= @idea.description %></p>
 
+  <p><%= render @idea.comments %></p>
+
+  <%= form_for([@group, @idea, @comment]) do |form| %>
+    <%= form.text_area :body %>
+    <%= form.submit "Post" %>
+  <% end %>
+
   <nav>
     <div>
       <ul class="button-group radius round">
