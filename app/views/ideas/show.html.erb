@@ -5,6 +5,7 @@
 
   <p><%= render @idea.comments %></p>
 
+    <script src="//js.pusher.com/2.2/pusher.min.js"></script>
   <%= form_for([@group, @idea, @comment]) do |form| %>
     <%= form.text_area :body %>
     <%= form.submit "Post" %>
