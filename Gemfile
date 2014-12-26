@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'dotenv-deployment'
-gem 'rails', '4.1.4'
+
+gem 'rails', ' 4.2.0'
 gem 'pg', '~> 0.17.1'
 gem 'pusher', '~> 0.14.1'
 
@@ -16,14 +17,15 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'monban', '~> 0.1.1'
+gem 'devise'
+gem 'simple_form'
+
 
 gem 'mandrill_mailer'
 
 group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'monban-generators', '~> 0.0.4'
 end
 
 group :development, :test  do

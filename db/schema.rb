@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013032141) do
+ActiveRecord::Schema.define(version: 20141226034044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: true do |t|
-    t.string   "commenter"
+  create_table "comments", force: :cascade do |t|
+    t.string   "commenter",  limit: 255
     t.text     "body"
     t.integer  "idea_id"
     t.datetime "created_at"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141013032141) do
 
   add_index "comments", ["idea_id"], name: "index_comments_on_idea_id", using: :btree
 
-  create_table "group_memberships", force: true do |t|
+  create_table "group_memberships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "group_id"
     t.datetime "created_at"
@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 20141013032141) do
   add_index "group_memberships", ["group_id"], name: "index_group_memberships_on_group_id", using: :btree
   add_index "group_memberships", ["user_id"], name: "index_group_memberships_on_user_id", using: :btree
 
-  create_table "groups", force: true do |t|
-    t.string   "name"
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "idea_memberships", force: true do |t|
+  create_table "idea_memberships", force: :cascade do |t|
     t.integer  "idea_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20141013032141) do
   add_index "idea_memberships", ["idea_id"], name: "index_idea_memberships_on_idea_id", using: :btree
   add_index "idea_memberships", ["user_id"], name: "index_idea_memberships_on_user_id", using: :btree
 
-  create_table "ideas", force: true do |t|
-    t.string   "title"
+  create_table "ideas", force: :cascade do |t|
+    t.string   "title",       limit: 255
     t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -66,18 +66,28 @@ ActiveRecord::Schema.define(version: 20141013032141) do
 
   add_index "ideas", ["group_id"], name: "index_ideas_on_group_id", using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "email",                           null: false
-    t.string   "password_digest",                 null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "admin",           default: false, null: false
-    t.string   "username"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                              default: "",    null: false
+    t.string   "password_digest",        limit: 255,                 null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.boolean  "admin",                              default: false, null: false
+    t.string   "username",               limit: 255
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "encrypted_password",                 default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                      default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

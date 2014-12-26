@@ -1,15 +1,11 @@
-require "monban/constraints/signed_in"
-require "monban/constraints/signed_out"
-
 Rails.application.routes.draw do
-  constraints Monban::Constraints::SignedIn.new do
-    root "search_results#show"
-  end
+  devise_for :users, controllers: {
+    sessions: 'sessions'
+  }
+  # devise_for :users
+  #root "search_results#show"
 
-  constraints Monban::Constraints::SignedOut.new do
-    root "homes#show", as: :landing
-   # root "sessions#new", as: :landing
-  end
+  root "homes#show", as: :landing
 
   get '/about' => 'pages#about'
   get '/privacy' => 'pages#privacy'
