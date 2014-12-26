@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = sign_up(user_params)
+    binding.pry
 
     if @user.save
       UserMailer.welcome_email(@user).deliver

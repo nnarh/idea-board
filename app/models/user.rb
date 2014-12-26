@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :groups, through: :group_memberships
 
   validates :email, presence: true, uniqueness: true
-  validates :password_digest, presence: true
+  #validates :password_digest, presence: true
 
   def join_group(group)
     groups << group

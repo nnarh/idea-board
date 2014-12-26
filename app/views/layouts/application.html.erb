@@ -11,11 +11,11 @@
       <section class="row">
         <!-- Left Nav Section -->
         <ul class="medium-6 columns">
-          <% if signed_in? %>
+          <% if user_signed_in? %>
             <li><img src="https://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(current_user.email) %>?s=35"></li>
           <% end %>
           <li class="nav-link"><%= link_to "Home", landing_path %></li>
-          <% if signed_in? %>
+          <% if user_signed_in? %>
             <li class="nav-link"><%= link_to "Ideas", ideas_path %></li>
             <li class="nav-link"><%= link_to "Groups", groups_path %></li>
             <li class="nav-link"><%= link_to "Sign out", session_path, method: :delete %></li>
@@ -35,7 +35,7 @@
         </div>
       </section>
     </nav>
-    <% if signed_in? %>
+    <% if user_signed_in? %>
       <div class="row">
         <h3>Hello, <%= current_user.username %>!</h3>
       </div>
