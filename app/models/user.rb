@@ -3,6 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  #devise :database_authenticatable, :registerable,
+         #:recoverable, :rememberable, :trackable, :validatable
   has_many :ideas
   has_many :idea_memberships
   has_many :joined_ideas, through: :idea_memberships, source: :idea

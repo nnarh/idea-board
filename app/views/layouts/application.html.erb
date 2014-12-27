@@ -18,10 +18,10 @@
           <% if user_signed_in? %>
             <li class="nav-link"><%= link_to "Ideas", ideas_path %></li>
             <li class="nav-link"><%= link_to "Groups", groups_path %></li>
-            <li class="nav-link"><%= link_to "Sign out", session_path, method: :delete %></li>
+            <li class="nav-link"><%= link_to "Sign out",destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li class="nav-link"><%= link_to "Sign in", new_session_path %></li>
-            <li class="nav-link"><%= link_to "Sign up", new_user_path %></li>
+            <li class="nav-link"><%= link_to "Sign in", new_user_session_path %></li>
+            <li class="nav-link"><%= link_to "Sign up", new_user_registration_path %></li>
           <% end %>
         </ul>
         <!-- Right Nav Section -->

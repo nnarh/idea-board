@@ -1,17 +1,14 @@
 class ApplicationController < ActionController::Base
-  #before_action :require_login
+  #before_action :configure_permitted_parameters, if: :devise_controller?
 
   protect_from_forgery with: :exception
 
-  # def current_user
-  #   super || Guest.new
-  # end
+  protected
 
-  # def authorize
-  #   @hash = Digest::MD5.hexdigest(current_user.email)
-  #   unless current_user && current_user.admin?
-  #    redirect_to root_path, notice: "Page not Found"
-  #     false
-  #   end
-  # end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit! }
+    # devise_parameter_sanitizer.for(:sign_up) do |p|
+    #   p.permit(:username, :email, :password, :password_confirmation)
+    #end
+  end
 end

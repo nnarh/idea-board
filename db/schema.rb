@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226034044) do
+ActiveRecord::Schema.define(version: 20150107012634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string   "commenter",  limit: 255
+    t.string   "commenter"
     t.text     "body"
     t.integer  "idea_id"
     t.datetime "created_at"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20141226034044) do
   add_index "group_memberships", ["user_id"], name: "index_group_memberships_on_user_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name",        limit: 255
+    t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20141226034044) do
   add_index "idea_memberships", ["user_id"], name: "index_idea_memberships_on_user_id", using: :btree
 
   create_table "ideas", force: :cascade do |t|
-    t.string   "title",       limit: 255
+    t.string   "title"
     t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -67,20 +67,16 @@ ActiveRecord::Schema.define(version: 20141226034044) do
   add_index "ideas", ["group_id"], name: "index_ideas_on_group_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                              default: "",    null: false
-    t.string   "password_digest",        limit: 255,                 null: false
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
-    t.boolean  "admin",                              default: false, null: false
-    t.string   "username",               limit: 255
-    t.string   "provider",               limit: 255
-    t.string   "uid",                    limit: 255
-    t.string   "name",                   limit: 255
-    t.string   "encrypted_password",                 default: "",    null: false
+    t.string   "email",                  default: "",    null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "admin",                  default: false, null: false
+    t.string   "username"
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"

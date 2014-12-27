@@ -1,20 +1,19 @@
-class SessionsController < ApplicationController
-#:w
-  #  skip_before_action :require_login, only: [:new, :create]
+class oldSessionsController < ApplicationController
+  #skip_before_action :require_login, only: [:new, :create]
 
   def new
   end
 
-  def create
-    user = authenticate_session(session_params)
+  # def create
+  #   user = authenticate_session(session_params)
 
-    if sign_in(user)
-      redirect_to search_path
-    else
-      flash[:notice] = "Email or password is invalid."
-      redirect_to root_path
-    end
-  end
+  #   if sign_in(user)
+  #     redirect_to search_path
+  #   else
+  #     flash[:notice] = "Email or password is invalid."
+  #     redirect_to root_path
+  #   end
+  # end
 
   def destroy
     sign_out
@@ -24,6 +23,6 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:username, :password)
+    params.require(:session).permit(:email, :password)
   end
 end
