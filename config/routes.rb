@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/privacy' => 'pages#privacy'
   get '/terms' => 'pages#terms'
 
+
   #resources :session
   #resource :session, only: [:new, :create, :destroy]
   #resources :users, only: [:new, :create, :show]
