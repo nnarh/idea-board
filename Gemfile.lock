@@ -227,6 +227,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors (~> 1.0.1)
   binding_of_caller (~> 0.7.2)
+  capybara (~> 2.4.0)
   capybara-webkit (>= 1.2.0)
   coffee-rails (~> 4.0.0)
   database_cleaner
@@ -242,7 +243,7 @@ DEPENDENCIES
   pry-rails
   pusher (~> 0.14.1)
   rails (~> 4.2.0)
-  rspec-rails (~> 3.0.0)
+  rspec-rails (~> 3.0.1)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   shoulda-matchers

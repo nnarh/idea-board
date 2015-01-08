@@ -34,13 +34,14 @@ end
 group :development, :test  do
   gem 'factory_girl_rails'
   gem 'pry-rails'
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.0.1'
   gem 'better_errors', '~> 1.0.1'
   gem 'binding_of_caller', '~> 0.7.2'
 end
 
 group :test do
   gem 'database_cleaner'
+  gem 'capybara', '~> 2.4.0'
   gem 'capybara-webkit', '>= 1.2.0'
   gem "shoulda-matchers", require: false
 end

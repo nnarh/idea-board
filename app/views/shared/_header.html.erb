@@ -1,0 +1,27 @@
+<nav class="navigation" role="navigation">
+  <section class="row">
+    <!-- Left Nav Section -->
+    <ul class="medium-6 columns">
+      <% if user_signed_in? %>
+          <li><img src="https://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(current_user.email) %>?s=35"></li>
+      <% end %>
+        <li class="nav-link"><%= link_to "Home", landing_path %></li>
+      <% if user_signed_in? %>
+        <li class="nav-link"><%= link_to "Ideas", ideas_path %></li>
+        <li class="nav-link"><%= link_to "Groups", groups_path %></li>
+        <li class="nav-link"><%= link_to "Sign out",destroy_user_session_path, method: :delete %></li>
+        <h3 style="color:#FFF;">Hello <%#= current_user.email %>!</h3>
+      <% else %>
+        <li class="nav-link"><%= link_to "Sign in", new_user_session_path %></li>
+        <li class="nav-link"><%= link_to "Sign up", new_user_registration_path %></li>
+      <% end %>
+    </ul>
+  <!-- Right Nav Section -->
+    <div class="medium-6 columns nav-search">
+      <%= form_tag(search_path, method: :get) do %>
+        <%= search_field_tag :query, nil, placeholder: "Search Ideas" %>
+        <%= submit_tag "Search", :class => "button" %>
+      <% end %>
+    </div>
+  </section>
+</nav>
