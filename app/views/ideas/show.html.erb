@@ -1,36 +1,40 @@
 <div class="row">
-  <h2><%= @idea.title %></h2>
+  <div class="large-3 columns groups-column">
+    <div class="panel">
+      <h2><%= @idea.title %></h2>
 
-  <p><%= @idea.description %></p>
+      <p><%= @idea.description %></p>
 
-  <p><%= render @idea.comments %></p>
+      <p><%= render @idea.comments %></p>
 
-    <script src="//js.pusher.com/2.2/pusher.min.js"></script>
-  <%= form_for([@group, @idea, @comment]) do |form| %>
-    <%= form.text_area :body %>
-    <%= form.submit "Post" %>
-  <% end %>
+      <script src="//js.pusher.com/2.2/pusher.min.js"></script>
+      <%= form_for([@group, @idea, @comment]) do |form| %>
+      <%= form.text_area :body %>
+      <%= form.submit "Post" %>
+      <% end %>
 
-  <nav>
-    <div>
-      <ul class="button-group radius round">
-        <% if current_user.member_idea?(@idea) %>
-          <%= link_to "Leave", leave_idea_path(@idea), method: :delete, data: { confirm: "Sorry to see you go!" }, :class => "button tiny radius round" %>
-        <% else %>
-          <%= link_to "Join", join_idea_path(@idea), method: :post, :class => "button tiny radius round" %>
-        <% end %>
-        <% if current_user.admin? %>
-          <%= link_to "Delete Idea", [@group, @idea], method: :delete, data: { confirm: "Are you sure you want to delete idea?" }, :class => "button tiny radius round" %>
+      <nav>
+        <div>
+          <ul class="button-group radius">
+            <% if current_user.member_idea?(@idea) %>
+            <%= link_to "Leave", leave_idea_path(@idea), method: :delete, data: { confirm: "Sorry to see you go!" }, :class => "button tiny radius" %>
+            <% else %>
+            <%= link_to "Join", join_idea_path(@idea), method: :post, :class => "button tiny radius" %>
+            <% end %>
+            <% if current_user.admin? %>
+            <%= link_to "Delete Idea", [@group, @idea], method: :delete, data: { confirm: "Are you sure you want to delete idea?" }, :class => "button tiny radius" %>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+
+      <h3>Member list</h3>
+
+      <ul>
+        <% @idea.teammates.each do |teammate| %>
+        <li><%= teammate.username %></li>
         <% end %>
       </ul>
     </div>
-  </nav>
-
-  <h3>Member list</h3>
-
-  <ul>
-    <% @idea.teammates.each do |teammate| %>
-      <li><%= teammate.username %></li>
-    <% end %>
-  </ul>
+  </div>
 </div>

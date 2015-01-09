@@ -1,32 +1,38 @@
-<h2><%= @group.name %></h2>
+<div class="row">
+  <div class="large-3 columns groups-column">
+    <div class="panel">
+      <h2><%= @group.name %></h2>
 
-<p><%= @group.description %></p>
+      <p><%= @group.description %></p>
 
-<nav>
-  <div>
-    <ul class="button-group radius round">
-      <% if current_user.member_group?(@group) %>
-        <%= link_to "Create Idea", new_group_idea_path(@group), :class => "button tiny radius round" %>
-        <%= link_to "Leave Group", leave_group_path(@group), method: :delete, data: { confirm: "Are you sure you want to leave the group?" }, :class => "button tiny radius round" %>
-      <% else %>
-        <%= link_to "Join", join_group_path(@group), method: :post, :class => "button tiny radius round" %>
-      <% end %>
-      <% if current_user.admin? %>
-        <%= link_to "Edit Group", edit_group_path(@group), :class => "button tiny radius round" %>
-        <%= link_to "Delete Group", @group,  method: :delete, data: { confirm: "Are you sure you want to delete the group?" }, :class => "button tiny radius round" %>
-      <% end %>
-    </ul>
+      <nav>
+        <div>
+          <ul class="button-group radius">
+            <% if current_user.member_group?(@group) %>
+            <%= link_to "Create Idea", new_group_idea_path(@group), :class => "button tiny radius" %>
+            <%= link_to "Leave Group", leave_group_path(@group), method: :delete, data: { confirm: "Are you sure you want to leave the group?" }, :class => "button tiny radius" %>
+            <% else %>
+            <%= link_to "Join", join_group_path(@group), method: :post, :class => "button tiny radius" %>
+            <% end %>
+            <% if current_user.admin? %>
+            <%= link_to "Edit Group", edit_group_path(@group), :class => "button tiny radius round" %>
+            <%= link_to "Delete Group", @group,  method: :delete, data: { confirm: "Are you sure you want to delete the group?" }, :class => "button tiny radius" %>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+
+      <h3>Group Ideas</h3>
+
+      <%= render @group.ideas %>
+
+      <h3>Member list</h3>
+
+      <ul>
+        <% @group.users.each do |user| %>
+        <li><%= user.username %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-</nav>
-
-<h3>Group Ideas</h3>
-
-<%= render @group.ideas %>
-
-<h3>Member list</h3>
-
-<ul>
-  <% @group.users.each do |user| %>
-    <li><%= user.username %></li>
-  <% end %>
-</ul>
+</div>
